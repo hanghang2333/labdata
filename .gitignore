@@ -1,0 +1,17 @@
+*.pyc
+*.pkl
+*.swp
+*.jpg
+*.JPG
+*.png
+*.PNG
+*.jpeg
+*.JPEG
+*.ttt
+*.csv
+cifar-10-batches-py/*
+cifar-100-python/*
+logs/*
+notMNIST_small/*
+submit/*
+
