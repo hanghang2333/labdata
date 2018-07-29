@@ -5,13 +5,17 @@ import numpy as np
 from tqdm import tqdm
 import dataset,image_process
 from plain_model import resnet
-#X_train, X_test, y_train, y_test,index_label = dataset.get_data('fmnist')
+X_train, X_test, y_train, y_test,index_label = dataset.get_data('fmnist')
 num_classes = 10#len(index_label)
 print('numclass:',num_classes)
 image_height,image_width,image_channel = 28,28,1
 # 识别模型
 g1 = tf.Graph()
-
+g2 = tf.Graph()
+g3 = tf.Graph()
+g4 = tf.Graph()
+g5 = tf.Graph()
+g6 = tf.Graph()
 var_list_name = None
 var_add = [[],[],[],[],[]]
 with g6.as_default():
@@ -21,7 +25,7 @@ with g6.as_default():
     model6 = resnet(image_height,image_width,image_channel,0.5,num_classes)
     saver6 = tf.train.Saver()
     # 读取训练好的模型参数
-    saver6.restore(sess1, 'logs/0720/45model')#0.924
+    saver6.restore(sess6, 'logs/0720/45model')#0.924
     print('load done...')
     var_list = tf.trainable_variables()
     var_list_name = [i.name for i in var_list]
@@ -106,7 +110,7 @@ with g1.as_default():
     #calc mean
     mean = []
     for idx,i in enumerate(range(len(var_list_name))):
-        tmp = (var[0][idx]+var[1][idx]+var[2][idx]+var[3][idx]+var[4][idx])/5
+        tmp = (var_add[0][idx]+var_add[1][idx]+var_add[2][idx]+var_add[3][idx]+var_add[4][idx])/5
         sess1.run(tf.assign(var_list[idx],tmp))
     print('mean done')
 

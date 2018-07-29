@@ -2,10 +2,10 @@ import pickle
 import numpy as np
 from sklearn.model_selection import train_test_split
 # reload a file to a variable
-with open('dictr1.pkl', 'rb') as file1:
+with open('dictr_save.pkl', 'rb') as file1:
     dictr =pickle.load(file1)
     print('dictr:',len(dictr))
-with open('dictw1.pkl', 'rb') as file1:
+with open('dictw_save.pkl', 'rb') as file1:
     dictw =pickle.load(file1)
     print('dictw:',len(dictw)) 
 print('load data done')
@@ -46,7 +46,7 @@ from model_uncer_lstm import resnet
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu_core',type=str,default='0',help='use which gpu core')
-parser.add_argument('--logs',type=str,default='logs/0625',help='logs path')
+parser.add_argument('--logs',type=str,default='logs/0722lstm',help='logs path')
 args = parser.parse_args()
 np.random.seed(1)#固定下来随机化shuffle的序列
 # 超参数
